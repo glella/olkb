@@ -20,17 +20,17 @@ for url in ['https://orders.olkb.com']:
 
 # Need to grab extra 4 chars at begining so it does not count orders
 # that were combined with others
-p = re.compile('<li>10000\d{4}')
+p = re.compile(r'<li>10000\d{4}')
 temp = p.findall(response.text)
 # Removes the extra first 4 chars of each entry in the list
 orders = [s[4:] for s in temp]
 #print(orders)
-order_number='100007000' // put your own order number
+order_number='100007000' # put your own order number
 if order_number in orders:
 	order_position = orders.index(order_number) + 1
 	print(f'olkb position: {order_position}')
 
-print('---')
+print('------------------')
 
 order_count = len(orders)
 print(f'Total orders: {order_count}')
